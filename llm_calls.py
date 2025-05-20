@@ -8,7 +8,7 @@ def classify_input(message):
             {
                 "role": "system",
                 "content": """
-                        Your task is to classify if the user message is related to buildings and architecture or not.
+                       You are part of an acoustic design assistant for architecture and the built environment.
                         Output only the classification string.
                         If it is related, output "Related", if not, output "Refuse to answer".
 
@@ -16,7 +16,7 @@ def classify_input(message):
                         User message: "How do I bake cookies?"
                         Output: "Refuse to answer"
 
-                        User message: "What is the tallest skyscrapper in the world?"
+                        User message: "What wall materials are best for reducing echo in a yoga studio?"
                         Output: "Related"
                         """,
             },
@@ -38,7 +38,7 @@ def generate_concept(message):
             {
                 "role": "system",
                 "content": """
-                        You are a visionary intern at a leading architecture firm.
+                        You are part of an acoustic design assistant for architecture and the built environment.
                         Your task is to craft a short, poetic, and highly imaginative concept for a building design.
                         Weave the initial information naturally into your idea, letting it inspire creative associations and unexpected imagery.
                         Your concept should feel bold, evocative, and memorable — like the opening lines of a story.
@@ -67,25 +67,29 @@ def extract_attributes(message):
 
                         # Instructions #
                         You are a keyword extraction assistant.
-                        Your task is to read a given text and extract relevant keywords according to three categories: shape, theme, and materials.
+                        You are an attribute extraction assistant for acoustic design evaluation.
                         Only output a JSON object in the following format:
                         {
-                            "shape": "keyword1, keyword2",
-                            "theme": "keyword3, keyword4",
-                            "materials": "keyword5, keyword6"
+                            "comfort_level": "keyword1, keyword2",
+                            "guideline_alignment": "keyword3, keyword4",
+                            "noise_mitigation": "keyword5, keyword6",
+                            "design_principles": "keyword7, keyword8",
+                            "comfort_improvements": "keyword9, keyword10"
                         }
 
                         # Rules #
-                        If a category has no relevant keywords, write "None" for that field.
-                        Separate multiple keywords in the same field by commas without any additional text.
-                        Do not include explanations, introductions, or any extra information—only output the JSON.
-                        Focus on concise, meaningful keywords directly related to the given categories.
+                        Use concise, meaningful, comma-separated keywords.
+                        If no keywords apply for a field, write "None".
+                        Do not include explanations, markdown, or formatting.
+                        Focus on acoustics and built environment context.
                         Do not try to format the json output with characters like ```json
 
                         # Category guidelines #
-                        Shape: Words that describe form, geometry, structure (e.g., circle, rectangular, twisting, modular).
-                        Theme: Words related to the overall idea, feeling, or concept (e.g., minimalism, nature, industrial, cozy).
-                        Materials: Specific physical materials mentioned (e.g., wood, concrete, glass, steel).
+                       comfort_level: Words describing sound-related experience (e.g., calm, harsh, tranquil, disruptive)
+                       guideline_alignment: References to standards (e.g., ISO compliant, within WHO limits, EPA safe)
+                       noise_mitigation: Physical or spatial strategies (e.g., acoustic panel, buffer zone, insulation, green wall)
+                       design_principles: Concepts guiding acoustic design (e.g., diffusion, absorption, zoning, separation)
+                       comfort_improvements: Actions that enhance comfort (e.g., install soft ceiling, add rug, seal door gaps)
                         """,
             },
             {
