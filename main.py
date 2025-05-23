@@ -26,7 +26,7 @@ else:
 
     attributes = attributes.strip()
     attributes = json.loads(attributes)
-    shape, theme, materials = (attributes[k] for k in ("shape", "theme", "materials"))
+    shape, theme, materials = (attributes[k] for k in ("comfort_level", "guideline_alignment", "noise_mitigation", "design_principles", "comfort_improvements"))
 
     ### EXAMPLE 3: Chaining ###
     brutalist_question = create_question(theme)
